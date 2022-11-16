@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { MovieLink } from './MovieLink/MovieLink';
 
-export const MoviesList = ({ moviesData }) => {
+export const TrendingList = ({ moviesData }) => {
   return (
     <ul>
       {moviesData.map(({ id, original_title, poster_path }) => (
@@ -16,6 +16,6 @@ export const MoviesList = ({ moviesData }) => {
   );
 };
 
-MoviesList.propTypes = {
+TrendingList.propTypes = {
   moviesData: PropTypes.array.isRequired,
 };
