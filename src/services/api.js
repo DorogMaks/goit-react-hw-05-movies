@@ -3,9 +3,7 @@ import axios from 'axios';
 const API_BASE_URL = 'https://api.themoviedb.org/3';
 const API_KEY = '76d635679cabf189c0749ed5946c0835';
 
-// const controller = new AbortController();
-
-export async function fetchTrending() {
+export async function fetchTrending(controller) {
   const url = `${API_BASE_URL}/trending/movie/day`;
   const urlParams = {
     api_key: API_KEY,
@@ -13,7 +11,7 @@ export async function fetchTrending() {
 
   const response = await axios.get(url, {
     params: urlParams,
-    // signal: controller.signal,
+    signal: controller.signal,
   });
 
   return response.data.results;

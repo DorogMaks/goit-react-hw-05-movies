@@ -13,11 +13,11 @@ const Home = () => {
   const [status, setStatus] = useState('pending');
 
   useEffect(() => {
-    // const controller = new AbortController();
+    const controller = new AbortController();
 
     (async () => {
       try {
-        const movies = await fetchTrending();
+        const movies = await fetchTrending(controller);
         setMovies(movies);
         setStatus('resolved');
       } catch (error) {
@@ -26,9 +26,9 @@ const Home = () => {
       }
     })();
 
-    // return () => {
-    //   controller.abort();
-    // };
+    return () => {
+      controller.abort();
+    };
   }, []);
 
   return (
