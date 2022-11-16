@@ -1,4 +1,4 @@
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useLocation } from 'react-router-dom';
 import noPoster from '../../../images/no-poster.jpg';
 
 const Description = ({
@@ -11,6 +11,8 @@ const Description = ({
     genres,
   },
 }) => {
+  const location = useLocation();
+  const backLinkHref = location.state?.from ?? '/';
   const posterPath = `https://image.tmdb.org/t/p/w500${poster_path}`;
 
   return (
@@ -41,10 +43,14 @@ const Description = ({
       </div>
       <ul>
         <li>
-          <Link to="cast">Cast</Link>
+          <Link to="cast" state={{ from: backLinkHref }}>
+            Cast
+          </Link>
         </li>
         <li>
-          <Link to="reviews">Reviews</Link>
+          <Link to="reviews" state={{ from: backLinkHref }}>
+            Reviews
+          </Link>
         </li>
       </ul>
       <Outlet />

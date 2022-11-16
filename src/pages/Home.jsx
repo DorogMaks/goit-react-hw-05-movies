@@ -5,7 +5,7 @@ import { Section } from 'components/Shared/Section.styled';
 import { Container } from 'components/Shared/Container.styled';
 import { Loader } from 'components/Loader/Loader';
 import { Notification } from 'components/Notification/Notification';
-import { TrendingList } from 'components/TrendingList/TrendingList';
+import { MoviesList } from 'components/MoviesList/MoviesList';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -38,7 +38,7 @@ const Home = () => {
         {status === 'rejected' && (
           <Notification message="Ooops, something went wrong" />
         )}
-        {status === 'resolved' && <TrendingList moviesData={movies} />}
+        {status === 'resolved' && <MoviesList moviesData={movies} />}
       </Container>
     </Section>
   );
