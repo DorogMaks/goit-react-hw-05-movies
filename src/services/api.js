@@ -46,7 +46,7 @@ export async function fetchMovieDetails(id, controller) {
   return response.data;
 }
 
-export async function fetchCast(id) {
+export async function fetchCast(id, controller) {
   const url = `${API_BASE_URL}/movie/${id}/credits`;
   const urlParams = {
     api_key: API_KEY,
@@ -54,6 +54,7 @@ export async function fetchCast(id) {
 
   const response = await axios.get(url, {
     params: urlParams,
+    signal: controller.signal,
   });
 
   return response.data.cast;

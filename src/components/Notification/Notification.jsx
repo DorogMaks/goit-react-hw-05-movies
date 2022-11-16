@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
-import React from 'react';
 import { Message, Text } from './Notification.styled';
+import notFound from '../../images/notFound.jpg';
 
-export const Notification = ({ children, message }) => {
+export const Notification = ({ message }) => {
   return (
     <Message>
-      {children}
+      <img src={notFound} alt="not found" width="280px" />
       <Text>{message}</Text>
     </Message>
   );

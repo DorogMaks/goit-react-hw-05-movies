@@ -5,7 +5,7 @@ import { Section } from 'components/Shared/Section.styled';
 import { useEffect, useState } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { fetchMovieDetails } from 'services/api';
-import notFound from '../../images/notFound.jpg';
+import Description from './Description/Description';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
@@ -23,10 +23,9 @@ const MovieDetails = () => {
     const controller = new AbortController();
     (async () => {
       try {
-        const movie = await fetchMovieDetails(movieId, controller);
-        setMovieDetails(movie);
+        const res = await fetchMovieDetails(movieId, controller);
+        setMovieDetails(res);
         setStatus('resolved');
-        console.log(movie);
       } catch (error) {
         console.error(error.message);
         setStatus('rejected');
@@ -44,13 +43,14 @@ const MovieDetails = () => {
         <Link to={backLinkHref}>{'< Go back'}</Link>
         {status === 'pending' && <Loader />}
         {status === 'rejected' && (
-          <Notification message="Ooops, something went wrong">
-            <img src={notFound} alt="not found" width="280px" />
-          </Notification>
+          <Notification message="Ooops, something went wrong" />
         )}
-        {status === 'resolved' && movieDetails && <div>MovieDetailsCard</div>}
+        {status === 'resolved' && movieDetails && (
+          <Description movieDetails={movieDetails} />
+        )}
       </Container>
     </Section>
   );
 };
+
 export default MovieDetails;

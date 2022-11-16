@@ -6,7 +6,6 @@ import { Container } from 'components/Shared/Container.styled';
 import { Loader } from 'components/Loader/Loader';
 import { Notification } from 'components/Notification/Notification';
 import { MoviesList } from 'components/MoviesList/MoviesList';
-import notFound from '../images/notFound.jpg';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -17,8 +16,8 @@ const Home = () => {
 
     (async () => {
       try {
-        const movies = await fetchTrending(controller);
-        setMovies(movies);
+        const res = await fetchTrending(controller);
+        setMovies(res);
         setStatus('resolved');
       } catch (error) {
         console.error(error.message);
@@ -37,9 +36,7 @@ const Home = () => {
         <h2>Trending today</h2>
         {status === 'pending' && <Loader />}
         {status === 'rejected' && (
-          <Notification message="Ooops, something went wrong">
-            <img src={notFound} alt="not found" width="280px" />
-          </Notification>
+          <Notification message="Ooops, something went wrong" />
         )}
         {status === 'resolved' && <MoviesList moviesData={movies} />}
       </Container>

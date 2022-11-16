@@ -8,7 +8,7 @@ export const MoviesList = ({ moviesData }) => {
         <MovieLink
           key={id}
           movieId={id}
-          poster={poster_path}
+          posterPath={poster_path}
           title={original_title}
         />
       ))}
