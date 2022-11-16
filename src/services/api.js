@@ -60,7 +60,7 @@ export async function fetchCast(id, controller) {
   return response.data.cast;
 }
 
-export async function fetchReviews(id) {
+export async function fetchReviews(id, controller) {
   const url = `${API_BASE_URL}/movie/${id}/reviews`;
   const urlParams = {
     api_key: API_KEY,
@@ -68,6 +68,7 @@ export async function fetchReviews(id) {
 
   const response = await axios.get(url, {
     params: urlParams,
+    signal: controller.signal,
   });
 
   return response.data.results;

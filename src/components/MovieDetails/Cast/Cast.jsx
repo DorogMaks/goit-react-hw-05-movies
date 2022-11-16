@@ -31,7 +31,7 @@ const Cast = () => {
   if (status === 'pending') return <Loader />;
 
   if (status === 'rejected')
-    return <Notification message="Ooops, something went wrong"></Notification>;
+    return <Notification message="Ooops, something went wrong" />;
 
   if (status === 'resolved' && castData.length === 0)
     return <p>We don't have any cast information for this movie</p>;
