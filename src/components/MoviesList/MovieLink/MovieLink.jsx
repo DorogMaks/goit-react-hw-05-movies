@@ -5,12 +5,13 @@ import noPoster from '../../../images/no-poster.jpg';
 export const MovieLink = ({ movieId, poster, title }) => {
   const location = useLocation();
   const movieLink = `/movies/${movieId}`;
+  const posterPath = `https://image.tmdb.org/t/p/w500${poster}`;
 
   return (
     <li>
       <Link to={movieLink} state={{ from: location }}>
         <img
-          src={poster ? `https://image.tmdb.org/t/p/w500${poster}` : noPoster}
+          src={poster ? posterPath : noPoster}
           alt={title}
           width={230}
           height={345}

@@ -17,7 +17,7 @@ export async function fetchTrending(controller) {
   return response.data.results;
 }
 
-export async function fetchMovies(searchQuery) {
+export async function fetchMovies(searchQuery, controller) {
   const url = `${API_BASE_URL}/search/movie`;
   const urlParams = {
     api_key: API_KEY,
@@ -26,12 +26,13 @@ export async function fetchMovies(searchQuery) {
 
   const response = await axios.get(url, {
     params: urlParams,
+    signal: controller.signal,
   });
 
   return response.data.results;
 }
 
-export async function fetchMovieDetails(id) {
+export async function fetchMovieDetails(id, controller) {
   const url = `${API_BASE_URL}/movie/${id}`;
   const urlParams = {
     api_key: API_KEY,
@@ -39,6 +40,7 @@ export async function fetchMovieDetails(id) {
 
   const response = await axios.get(url, {
     params: urlParams,
+    signal: controller.signal,
   });
 
   return response.data;
