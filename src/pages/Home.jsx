@@ -6,7 +6,7 @@ import { Container } from 'components/Shared/Container.styled';
 import { Loader } from 'components/Loader/Loader';
 import { Notification } from 'components/Notification/Notification';
 import { MoviesList } from 'components/MoviesList/MoviesList';
-import ImgNotFound from '../images/imgNotFound.jpg';
+import notFound from '../images/notFound.jpg';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -38,7 +38,7 @@ const Home = () => {
         {status === 'pending' && <Loader />}
         {status === 'rejected' && (
           <Notification message="Ooops, something went wrong">
-            <img src={ImgNotFound} alt="images not found" width="280px" />
+            <img src={notFound} alt="not found" width="280px" />
           </Notification>
         )}
         {status === 'resolved' && <MoviesList moviesData={movies} />}
