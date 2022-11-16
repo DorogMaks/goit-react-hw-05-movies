@@ -12,6 +12,7 @@ const Cast = () => {
 
   useEffect(() => {
     const controller = new AbortController();
+
     (async () => {
       try {
         const res = await fetchCast(movieId, controller);
@@ -40,11 +41,12 @@ const Cast = () => {
     return (
       <ul>
         {castData.map(({ id, profile_path, name, character }) => {
-          const poster = `https://image.tmdb.org/t/p/w500${profile_path}`;
+          const photo = `https://image.tmdb.org/t/p/w500${profile_path}`;
+
           return (
             <li key={id}>
               <img
-                src={profile_path ? poster : noPhoto}
+                src={profile_path ? photo : noPhoto}
                 alt={name}
                 width={230}
                 height={345}

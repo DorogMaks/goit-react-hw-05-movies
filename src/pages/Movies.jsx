@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import { fetchMovies } from 'services/api';
 import { SearchForm } from 'components/SearchForm/SearchForm';
 import { Container } from 'components/Shared/Container.styled';
 import { Section } from 'components/Shared/Section.styled';
-import { useSearchParams } from 'react-router-dom';
-import { fetchMovies } from 'services/api';
 import { Loader } from 'components/Loader/Loader';
 import { Notification } from 'components/Notification/Notification';
 import { MoviesList } from 'components/MoviesList/MoviesList';

@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { fetchTrending } from 'services/api';
 import { Section } from 'components/Shared/Section.styled';
 import { Container } from 'components/Shared/Container.styled';

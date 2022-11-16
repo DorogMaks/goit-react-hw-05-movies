@@ -1,8 +1,8 @@
-import { Loader } from 'components/Loader/Loader';
-import { Notification } from 'components/Notification/Notification';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchReviews } from 'services/api';
+import { Loader } from 'components/Loader/Loader';
+import { Notification } from 'components/Notification/Notification';
 
 const Reviews = () => {
   const { movieId } = useParams();
@@ -11,6 +11,7 @@ const Reviews = () => {
 
   useEffect(() => {
     const controller = new AbortController();
+
     (async () => {
       try {
         const res = await fetchReviews(movieId, controller);
@@ -33,7 +34,7 @@ const Reviews = () => {
     return <Notification message="Ooops, something went wrong" />;
 
   if (status === 'resolved' && reviewsData.length === 0)
-    return <p>We don't have any cast information for this movie</p>;
+    return <p>We don't have any reviews for this movie</p>;
 
   if (status === 'resolved')
     return (

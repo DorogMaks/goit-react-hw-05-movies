@@ -13,13 +13,13 @@ const Description = ({
 }) => {
   const location = useLocation();
   const backLinkHref = location.state?.from ?? '/';
-  const posterPath = `https://image.tmdb.org/t/p/w500${poster_path}`;
+  const poster = `https://image.tmdb.org/t/p/w500${poster_path}`;
 
   return (
     <>
       <div>
         <img
-          src={poster_path ? posterPath : noPoster}
+          src={poster_path ? poster : noPoster}
           alt={original_title}
           width={245}
           height={368}
@@ -29,7 +29,7 @@ const Description = ({
           <p>{`User Score: ${Math.round(vote_average * 10)}%`}</p>
           <div>
             <h3>Overview</h3>
-            <p>{overview ? overview : 'Overview not found'}</p>
+            <p>{overview ?? 'Overview not found'}</p>
           </div>
           <div>
             <h3>Genres</h3>

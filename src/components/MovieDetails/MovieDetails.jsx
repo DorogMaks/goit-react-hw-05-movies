@@ -1,11 +1,11 @@
-import { Loader } from 'components/Loader/Loader';
-import { Notification } from 'components/Notification/Notification';
-import { Container } from 'components/Shared/Container.styled';
-import { Section } from 'components/Shared/Section.styled';
 import { useEffect, useState } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { fetchMovieDetails } from 'services/api';
 import Description from './Description/Description';
+import { Loader } from 'components/Loader/Loader';
+import { Notification } from 'components/Notification/Notification';
+import { Container } from 'components/Shared/Container.styled';
+import { Section } from 'components/Shared/Section.styled';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
@@ -21,6 +21,7 @@ const MovieDetails = () => {
     setStatus('pending');
 
     const controller = new AbortController();
+
     (async () => {
       try {
         const res = await fetchMovieDetails(movieId, controller);
