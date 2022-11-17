@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
 import { MovieLink } from './MovieLink/MovieLink';
+import { MoviesListStyled } from './MoviesList.styled';
 
 export const MoviesList = ({ moviesData }) => {
   return (
-    <ul>
+    <MoviesListStyled>
       {moviesData.map(({ id, original_title, poster_path }) => (
         <MovieLink
           key={id}
@@ -12,7 +13,7 @@ export const MoviesList = ({ moviesData }) => {
           title={original_title}
         />
       ))}
-    </ul>
+    </MoviesListStyled>
   );
 };
 

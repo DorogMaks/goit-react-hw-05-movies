@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { fetchReviews } from 'services/api';
 import { Loader } from 'components/Loader/Loader';
 import { Notification } from 'components/Notification/Notification';
+import { Author, ReviewItem, ReviewList } from './Reviews.styled';
 
 const Reviews = () => {
   const { movieId } = useParams();
@@ -38,14 +39,14 @@ const Reviews = () => {
 
   if (status === 'resolved')
     return (
-      <ul>
+      <ReviewList>
         {reviewsData.map(({ id, author, content }) => (
-          <li key={id}>
-            <h3>{`Author: ${author}`}</h3>
+          <ReviewItem key={id}>
+            <Author>{`Author: ${author}`}</Author>
             <p>{content}</p>
-          </li>
+          </ReviewItem>
         ))}
-      </ul>
+      </ReviewList>
     );
 };
 

@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
-import { Link, useLocation } from 'react-router-dom';
-import noPoster from '../../../images/no-poster.jpg';
+import { useLocation } from 'react-router-dom';
+import noPoster from 'images/no-poster.jpg';
+import { MovieImage, MovieItem, MovieLinkStyled } from './MovieLink.styled';
 
 export const MovieLink = ({ movieId, posterPath, title }) => {
   const location = useLocation();
@@ -8,17 +9,12 @@ export const MovieLink = ({ movieId, posterPath, title }) => {
   const poster = `https://image.tmdb.org/t/p/w500${posterPath}`;
 
   return (
-    <li>
-      <Link to={movieLink} state={{ from: location }}>
-        <img
-          src={posterPath ? poster : noPoster}
-          alt={title}
-          width={230}
-          height={345}
-        />
+    <MovieItem>
+      <MovieLinkStyled to={movieLink} state={{ from: location }}>
+        <MovieImage src={posterPath ? poster : noPoster} alt={title} />
         {title}
-      </Link>
-    </li>
+      </MovieLinkStyled>
+    </MovieItem>
   );
 };
 

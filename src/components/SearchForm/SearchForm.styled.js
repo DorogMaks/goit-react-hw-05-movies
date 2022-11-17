@@ -2,21 +2,26 @@ import styled from 'styled-components';
 
 export const SearchFormStyled = styled.form`
   display: flex;
+  justify-content: center;
   align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 16px;
   width: 100%;
-  max-width: 600px;
+  max-width: 400px;
   background-color: #fff;
+  border: 1px solid black;
   border-radius: 3px;
   overflow: hidden;
 `;
 
 export const SearchFormButton = styled.button`
   display: flex;
-  align-items: center;
   justify-content: center;
-  width: 48px;
-  height: 34px;
-  /* border: 0; */
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  border: 0;
   opacity: 0.6;
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
@@ -45,7 +50,7 @@ export const SearchFormInput = styled.input`
   height: 100%;
   font: inherit;
   font-size: 20px;
-  /* border: none; */
+  border: none;
   outline: none;
   padding-left: 10px;
   padding-right: 4px;

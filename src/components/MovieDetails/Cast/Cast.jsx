@@ -3,7 +3,8 @@ import { useParams } from 'react-router-dom';
 import { fetchCast } from 'services/api';
 import { Loader } from 'components/Loader/Loader';
 import { Notification } from 'components/Notification/Notification';
-import noPhoto from '../../../images/no-photo.jpg';
+import noPhoto from 'images/no-photo.png';
+import { ActorName, CastImage, CastItem, CastList } from './Cast.styled';
 
 const Cast = () => {
   const { movieId } = useParams();
@@ -39,28 +40,23 @@ const Cast = () => {
 
   if (status === 'resolved')
     return (
-      <ul>
+      <CastList>
         {castData.map(({ id, profile_path, name, character }) => {
           const photo = `https://image.tmdb.org/t/p/w500${profile_path}`;
 
           return (
-            <li key={id}>
-              <img
-                src={profile_path ? photo : noPhoto}
-                alt={name}
-                width={230}
-                height={345}
-              />
-              <h3>{name}</h3>
+            <CastItem key={id}>
+              <CastImage src={profile_path ? photo : noPhoto} alt={name} />
+              <ActorName>{name}</ActorName>
               <p>
                 {character
                   ? `Character: ${character}`
                   : `Character is not specified`}
               </p>
-            </li>
+            </CastItem>
           );
         })}
-      </ul>
+      </CastList>
     );
 };
 export default Cast;

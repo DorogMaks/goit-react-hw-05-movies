@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { fetchTrending } from 'services/api';
 import { Section } from 'components/Shared/Section.styled';
 import { Container } from 'components/Shared/Container.styled';
+import { PageTitle } from 'components/Shared/PageTitle.styled';
 import { Loader } from 'components/Loader/Loader';
 import { Notification } from 'components/Notification/Notification';
 import { MoviesList } from 'components/MoviesList/MoviesList';
@@ -32,7 +33,7 @@ const Home = () => {
   return (
     <Section>
       <Container>
-        <h2>Trending today</h2>
+        <PageTitle>Trending today</PageTitle>
         {status === 'pending' && <Loader />}
         {status === 'rejected' && (
           <Notification message="Ooops, something went wrong" />

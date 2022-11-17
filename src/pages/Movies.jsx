@@ -6,6 +6,7 @@ import { Container } from 'components/Shared/Container.styled';
 import { Section } from 'components/Shared/Section.styled';
 import { Loader } from 'components/Loader/Loader';
 import { Notification } from 'components/Notification/Notification';
+import { NotificationText } from 'components/Notification/Notification.styled';
 import { MoviesList } from 'components/MoviesList/MoviesList';
 
 const Movies = () => {
@@ -46,7 +47,9 @@ const Movies = () => {
     <Section>
       <Container>
         <SearchForm onFormSubmit={onFormSubmit} />
-        {status === 'idle' && <p>{`Let's find some movies`}</p>}
+        {status === 'idle' && (
+          <NotificationText>{`Let's find some movies`}</NotificationText>
+        )}
         {status === 'pending' && <Loader />}
         {status === 'rejected' && (
           <Notification message="Ooops, something went wrong" />

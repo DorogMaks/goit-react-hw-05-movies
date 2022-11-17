@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-import { ReactComponent as SearchIcon } from '../../images/search.svg';
+import { ReactComponent as SearchIcon } from 'images/search.svg';
 import {
   SearchFormStyled,
   SearchFormButton,

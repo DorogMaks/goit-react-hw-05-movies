@@ -9,7 +9,8 @@ export const Message = styled.div`
   height: 100%;
 `;
 
-export const Text = styled.p`
+export const NotificationText = styled.p`
+  padding: 32px 0px;
   font-size: 26px;
   font-weight: 600;
   text-align: center;

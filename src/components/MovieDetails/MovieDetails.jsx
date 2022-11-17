@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
-import { Link, useLocation, useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { fetchMovieDetails } from 'services/api';
 import Description from './Description/Description';
 import { Loader } from 'components/Loader/Loader';
 import { Notification } from 'components/Notification/Notification';
 import { Container } from 'components/Shared/Container.styled';
 import { Section } from 'components/Shared/Section.styled';
+import { BackLink } from './MovieDetails.styled';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
@@ -41,7 +42,7 @@ const MovieDetails = () => {
   return (
     <Section>
       <Container>
-        <Link to={backLinkHref}>{'< Go back'}</Link>
+        <BackLink to={backLinkHref}>{'< Go back'}</BackLink>
         {status === 'pending' && <Loader />}
         {status === 'rejected' && (
           <Notification message="Ooops, something went wrong" />

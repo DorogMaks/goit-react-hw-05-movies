@@ -1,8 +1,19 @@
 import PropTypes from 'prop-types';
 import { Suspense } from 'react';
-import { Link, Outlet, useLocation } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import { Loader } from 'components/Loader/Loader';
-import noPoster from '../../../images/no-poster.jpg';
+import noPoster from 'images/no-poster.jpg';
+import {
+  DescriptionContainer,
+  LinksItem,
+  LinksList,
+  MovieDescription,
+  MovieImage,
+  MovieTitle,
+  NavigationLink,
+  Paragraph,
+  ParagraphTitle,
+} from './Description.styled';
 
 const Description = ({
   movieDetails: {
@@ -20,42 +31,44 @@ const Description = ({
 
   return (
     <>
-      <div>
-        <img
+      <DescriptionContainer>
+        <MovieImage
           src={poster_path ? poster : noPoster}
           alt={original_title}
-          width={245}
-          height={368}
         />
-        <div>
-          <h2>{`${original_title} (${release_date.slice(0, 4)})`}</h2>
+        <MovieDescription>
+          <Paragraph />
+          <MovieTitle>
+            {`${original_title} (${release_date.slice(0, 4)})`}
+          </MovieTitle>
           <p>{`User Score: ${Math.round(vote_average * 10)}%`}</p>
-          <div>
-            <h3>Overview</h3>
+          <Paragraph />
+          <Paragraph>
+            <ParagraphTitle>Overview</ParagraphTitle>
             <p>{overview ?? 'Overview not found'}</p>
-          </div>
-          <div>
-            <h3>Genres</h3>
+          </Paragraph>
+          <Paragraph>
+            <ParagraphTitle>Genres</ParagraphTitle>
             <p>
               {genres.length
                 ? genres.map(genre => genre.name).join(', ')
                 : 'Genres are not specified'}
             </p>
-          </div>
-        </div>
-      </div>
-      <ul>
-        <li>
-          <Link to="cast" state={{ from: backLinkHref }}>
+          </Paragraph>
+        </MovieDescription>
+      </DescriptionContainer>
+      <LinksList>
+        <LinksItem>
+          <NavigationLink to="cast" state={{ from: backLinkHref }}>
             Cast
-          </Link>
-        </li>
-        <li>
-          <Link to="reviews" state={{ from: backLinkHref }}>
+          </NavigationLink>
+        </LinksItem>
+        <LinksItem>
+          <NavigationLink to="reviews" state={{ from: backLinkHref }}>
             Reviews
-          </Link>
-        </li>
-      </ul>
+          </NavigationLink>
+        </LinksItem>
+      </LinksList>
       <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>
