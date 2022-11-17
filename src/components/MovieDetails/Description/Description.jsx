@@ -1,4 +1,7 @@
+import PropTypes from 'prop-types';
+import { Suspense } from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
+import { Loader } from 'components/Loader/Loader';
 import noPoster from '../../../images/no-poster.jpg';
 
 const Description = ({
@@ -53,9 +56,22 @@ const Description = ({
           </Link>
         </li>
       </ul>
-      <Outlet />
+      <Suspense fallback={<Loader />}>
+        <Outlet />
+      </Suspense>
     </>
   );
 };
 
 export default Description;
+
+Description.propTypes = {
+  movieDetails: PropTypes.shape({
+    poster_path: PropTypes.string,
+    original_title: PropTypes.string.isRequired,
+    release_date: PropTypes.string.isRequired,
+    vote_average: PropTypes.number.isRequired,
+    overview: PropTypes.string.isRequired,
+    genres: PropTypes.array.isRequired,
+  }).isRequired,
+};

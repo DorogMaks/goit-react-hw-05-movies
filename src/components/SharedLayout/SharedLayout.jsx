@@ -1,5 +1,8 @@
+import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import { GlobalStyles } from 'components/GlobalStyles';
+import { Loader } from 'components/Loader/Loader';
+import { Container } from 'components/Shared/Container.styled';
 import {
   HeaderStyled,
   Logo,
@@ -8,7 +11,6 @@ import {
   NavigationLink,
   NavigationStyled,
 } from './SharedLayout.styled';
-import { Container } from 'components/Shared/Container.styled';
 
 export const SharedLayout = () => (
   <>
@@ -17,7 +19,7 @@ export const SharedLayout = () => (
       <Container>
         <NavigationStyled>
           <LogoLink to="/">
-            <Logo>The Movies</Logo>
+            <Logo>SearchingMovies</Logo>
           </LogoLink>
           <NavigationContainer>
             <NavigationLink to="/" end>
@@ -29,7 +31,9 @@ export const SharedLayout = () => (
       </Container>
     </HeaderStyled>
     <main>
-      <Outlet />
+      <Suspense fallback={<Loader />}>
+        <Outlet />
+      </Suspense>
     </main>
   </>
 );
