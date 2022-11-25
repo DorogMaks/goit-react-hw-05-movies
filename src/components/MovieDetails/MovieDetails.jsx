@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import { fetchMovieDetails } from 'services/api';
 import Description from './Description/Description';
@@ -11,7 +11,7 @@ import { BackLink } from './MovieDetails.styled';
 const MovieDetails = () => {
   const { movieId } = useParams();
   const location = useLocation();
-  const backLinkHref = location.state?.from ?? '/';
+  const backRef = useRef(location.state?.from ?? '/');
 
   const [movieDetails, setMovieDetails] = useState({});
   const [status, setStatus] = useState('idle');
@@ -42,7 +42,7 @@ const MovieDetails = () => {
   return (
     <Section>
       <Container>
-        <BackLink to={backLinkHref}>{'< Go back'}</BackLink>
+        <BackLink to={backRef.current}>{'< Go back'}</BackLink>
         {status === 'pending' && <Loader />}
         {status === 'rejected' && (
           <Notification message="Ooops, something went wrong" />
